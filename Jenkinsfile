@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent  { label 'linux' }
+	options {
+	  buildDiscarder(logRotator(numToKeepStr: '5')}
     environment {
     DOCKERHUB_CREDENTIALS = credentials('umerwaqasiiu-dockerhub')
     }
@@ -7,7 +9,7 @@ pipeline {
 
         stage('Build') {
             steps {  
-                sh 'docker build -t umerwaqasiiu/docker_example .'
+                sh 'docker build -t umerwaqasiiu/dp-alpine:latest .'
             }
         }
         stage('Login') {
@@ -17,7 +19,7 @@ pipeline {
         }
         stage('Push') {
             steps{
-                sh 'docker push umerwaqasiiu/docker-example'
+                sh 'docker push umerwaqasiiu/dp-alpine:latese'
             }
         }
 }
