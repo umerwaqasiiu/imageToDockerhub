@@ -3,7 +3,7 @@ pipeline {
 	options {
 	  buildDiscarder(logRotator(numToKeepStr: '5'))
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('umerwaqasiiu-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('umerwaqasiiu-dockerhub2')
     }
     stages { 
 
@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Push') {
             steps{
-                sh 'docker push umerwaqasiiu/dp-alpine:latese'
+                sh 'docker push umerwaqasiiu/dp-alpine:latest'
             }
         }
 }
