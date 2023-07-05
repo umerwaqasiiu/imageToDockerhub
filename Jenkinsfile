@@ -23,10 +23,12 @@ pipeline {
             sh 'docker push umerwaqasiiu/dp-alpine:latest'
             }
         }
-}
-post {
-        always {
-            sh 'docker logout'
+
+	      stage('logout') {
+            steps{
+                sh 'docker logout'
+            }
         }
-    }
+}
+
 }
